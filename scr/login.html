@@ -41,25 +41,31 @@
 
   </main>
 
-  <script type="module">
-  import { app, auth } from "./firebaseConfig.js";
+ <script type="module">
+  import { app, auth } from "../firebaseConfig.js";
   import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  const btn = document.getElementById("login");
-  btn.addEventListener("click", async () => {
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
+  const btn = document.querySelector(".login");
+  const emailInput = document.querySelector('input[type="email"]');
+  const senhaInput = document.querySelector('input[type="password"]');
+
+  btn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const email = emailInput.value;
+    const senha = senhaInput.value;
 
     try {
       await signInWithEmailAndPassword(auth, email, senha);
       alert("Login realizado com sucesso!");
-      window.location.href = "site.html";
+      window.location.href = "../site.html";
     } catch (error) {
       alert("Erro: " + error.message);
     }
   });
 </script>
 
+
 </body> 
+
 
 
