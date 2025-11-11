@@ -37,25 +37,30 @@
     </form>
   </main>
 
-  <!-- 🔥 Firebase Registro -->
-  <script type="module">
-    import { app, auth } from "./firebaseConfig.js";
-    import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+ <script type="module">
+  import { app, auth } from "../firebaseConfig.js";
+  import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    const btn = document.getElementById("registrarBtn");
-    btn.addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const senha = document.getElementById("senha").value;
+  const btn = document.querySelector(".login");
+  const emailInput = document.querySelector('input[type="email"]');
+  const senhaInput = document.querySelector('input[type="password"]');
 
-      try {
-        await createUserWithEmailAndPassword(auth, email, senha);
-        alert("Conta criada com sucesso!");
-        window.location.href = "site.html"; // redireciona após registro
-      } catch (error) {
-        alert("Erro: " + error.message);
-      }
-    });
-  </script>
+  btn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const email = emailInput.value;
+    const senha = senhaInput.value;
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, senha);
+      alert("Conta criada com sucesso!");
+      window.location.href = "../site.html";
+    } catch (error) {
+      alert("Erro: " + error.message);
+    }
+  });
+</script>
+
 </body>
 
 </html>
+
