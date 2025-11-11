@@ -76,8 +76,27 @@
 		<p>Aqui você pode cronometrar seus tempos de resolução do cubo mágico.</p>
 	</main>
 
+	<script type="module">
+  import { app, auth } from "./firebaseConfig.js";
+  import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const logoutBtn = document.getElementById("logoutBtn"); // botão de sair, se tiver
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      signOut(auth);
+    });
+  }
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      window.location.href = "scr/login.html"; // bloqueia acesso se não estiver logado
+    }
+  });
+</script>
+
   
 </body>
 <script src="scr/sitescripts.js"></script>
 
 </html>
+
