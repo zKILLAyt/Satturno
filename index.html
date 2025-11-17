@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="scr/stylesite.css" />
+  <link rel="stylesheet" href="src/stylesite.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Cuber Trainer</title>
 </head>
@@ -31,35 +30,29 @@
     </ul>
   </nav>
 
-  <div class="background"></div>
-
   <main class="conteudo">
     <h1>Timer</h1>
     <p>Aqui você pode cronometrar seus tempos de resolução do cubo mágico.</p>
   </main>
 
-  <!-- 🔥 Script Firebase Auth -->
+  <!-- Firebase Auth -->
   <script type="module">
-    import { app, auth } from "./firebaseConfig.js";
+    import { auth } from "/firebaseConfig.js";
     import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    const logoutBtn = document.getElementById("logoutBtn");
-    if (logoutBtn) {
-      logoutBtn.addEventListener("click", () => {
-        signOut(auth).then(() => {
-          window.location.href = "scr/login.html"; // sai e volta pro login
-        });
+    // Deslogar
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      signOut(auth).then(() => {
+        window.location.href = "/src/login.html";
       });
-    }
+    });
 
-    // Bloqueia acesso se não estiver logado
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = "scr/login.html";
-      }
+    // Se não estiver logado → volta para login
+    onAuthStateChanged(auth, user => {
+      if (!user) window.location.href = "/src/login.html";
     });
   </script>
 
-  <script src="scr/sitescripts.js"></script>
+  <script src="src/sitescripts.js"></script>
 </body>
 </html>
