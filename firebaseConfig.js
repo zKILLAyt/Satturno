@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-// Configuração do seu Firebase
+// Configuração do seu projeto Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCFgqgG-Tq4gcDx77xwYA6t3kiqQGFkgNM",
   authDomain: "satturno-499f0.firebaseapp.com",
@@ -14,12 +14,12 @@ const firebaseConfig = {
   measurementId: "G-8Y3GKXPPQ2"
 };
 
-// Inicializa Firebase
+// Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// Inicializa Auth
+// Inicializa o módulo de autenticação
 const auth = getAuth(app);
 
-// Exporta
+// Exporta para usar em outros arquivos
 export { app, auth };
