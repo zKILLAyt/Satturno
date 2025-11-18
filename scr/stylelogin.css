@@ -12,9 +12,127 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url(img/360_F_415877698_c1VY6BMnUbNxh7Or80VDZAWng4UoGfWi.jpg);
-  background-size: cover;
-  background-position: center;
+ }
+  /* Fundo espacial */
+#space-background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #02030a;
+  z-index: -1;
+}
+
+/* Estrelas */
+.stars {
+  background: url("https://i.imgur.com/7l5fK94.png") repeat;
+  width: 300%;
+  height: 300%;
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  animation: moveStars 160s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes moveStars {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(1000px, 1000px); }
+}
+
+/* Planetas */
+.planet {
+  position: absolute;
+  animation: floatPlanet 18s ease-in-out infinite;
+}
+
+.planet img {
+  width: 200px;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+}
+
+/* Saturno destaque */
+.saturn img {
+  width: 380px; /* maior */
+  animation: rotateSaturn 35s linear infinite;
+}
+
+@keyframes rotateSaturn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Outras posições e tamanhos */
+.planet1 {
+  top: 10%;
+  left: 70%;
+}
+.planet1 img {
+  width: 150px;
+}
+
+.planet2 {
+  top: 70%;
+  left: 10%;
+}
+.planet2 img {
+  width: 120px;
+}
+/* PLANETA 3 - Roxo brilhante */
+.planet3 {
+  top: 25%;
+  left: 20%;
+  animation-duration: 22s;
+}
+.planet3 img {
+  width: 130px;
+}
+
+/* PLANETA 4 - Verde gelo */
+.planet4 {
+  top: 55%;
+  left: 80%;
+  animation-duration: 26s;
+}
+.planet4 img {
+  width: 160px;
+}
+
+/* PLANETA 5 - Vermelho escuro */
+.planet5 {
+  top: 8%;
+  left: 45%;
+  animation-duration: 30s;
+}
+.planet5 img {
+  width: 190px;
+}
+
+/* PLANETA 6 - Azul neon */
+.planet6 {
+  top: 75%;
+  left: 60%;
+  animation-duration: 24s;
+}
+.planet6 img {
+  width: 110px;
+}
+
+/* PLANETA 7 - Mini planeta laranja */
+.planet7 {
+  top: 40%;
+  left: 5%;
+  animation-duration: 20s;
+}
+.planet7 img {
+  width: 90px;
+}
+/* Animação de flutuar */
+@keyframes floatPlanet {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+  100% { transform: translateY(0); }
+}
+
   }
 
   .container {
@@ -129,4 +247,5 @@
 
     .registre-se a:hover {
       text-decoration: underline;
+
     }
